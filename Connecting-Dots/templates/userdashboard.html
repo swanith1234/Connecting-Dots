@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+
+    <style>
+        .message {
+    background-color: #eee;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+        body {
+    font-family: 'Arial', sans-serif;
+    margin-top: 5rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#chatBox {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#chatHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+}
+
+#closeChatBtn {
+    cursor: pointer;
+}
+
+#closeChatBtn:hover {
+    color: #ff8c00;
+}
+
+#chatBody {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#chatFooter {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 8px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#sendMessageBtn {
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 3rem;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        select,
+        input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 16px;
+            color: #555;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Dashboard</h1>
+
+    <form method="POST">
+        <label for="search_domain">Search by Domain:</label>
+        <select name="search_domain" id="searchDomainSelect">
+            <option value="">All</option>
+            {% for domain in domains %}
+                <option value="{{ domain }}" {% if domain == search_domain %}selected{% endif %}>{{ domain }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="search_subdomain">Search by Subdomain:</label>
+        <select name="search_subdomain" id="searchSubdomainSelect">
+            <option value="">All</option>
+            {% for subdomain in subdomains[search_domain] if search_domain %}
+                <option value="{{ subdomain }}" {% if subdomain == search_subdomain %}selected{% endif %}>{{ subdomain }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Search Users">
+    </form>
+
+    {% if users %}
+        <h2>Users:</h2>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Domain</th>
+                <th>Subdomain</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.domain }}</td>
+                    <td>{{ user.subdomain }}</td>
+                    <td><button id="openChatBtn">chat now</button></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No users found for the selected domain and subdomain.</p>
+    {% endif %}
+    <div id="chatBox">
+        <div id="chatHeader">
+            <span id="closeChatBtn">&times;</span>
+            <h3>Chat</h3>
+        </div>
+        <div id="chatBody">
+            <!-- Chat messages will go here -->
+        </div>
+        <div id="chatFooter">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button id="sendMessageBtn">Send</button>
+        </div>
+    </div>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+        const openChatBtn = document.getElementById('openChatBtn');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatBox = document.getElementById('chatBox');
+        const messageInput = document.getElementById('messageInput');
+        const chatBody = document.getElementById('chatBody');
+    
+        openChatBtn.addEventListener('click', function () {
+            chatBox.style.display = 'flex';
+        });
+    
+        closeChatBtn.addEventListener('click', function () {
+            chatBox.style.display = 'none';
+        });
+    
+        messageInput.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevents the newline character
+                const message = messageInput.value.trim();
+                if (message !== '') {
+                    appendMessage(message);
+                    messageInput.value = ''; // Clear the input field
+                }
+            }
+        });
+    
+        function appendMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'message';
+            messageElement.textContent = message;
+            chatBody.appendChild(messageElement);
+        }
+    });
+    
+   
+        function updateSubdomainOptions() {
+            var domainSelect = document.getElementById('domainSelect');
+            var subdomainSelect = document.getElementById('subdomainSelect');
+            var selectedDomain = domainSelect.options[domainSelect.selectedIndex].value;
+
+            // Clear existing options
+            subdomainSelect.innerHTML = '';
+
+            // Define subdomain options based on the selected domain
+            var subdomains = {
+                'Web app': ['HTML', 'CSS', 'JS', 'ANGULAR', 'REACT', 'NODE JS', 'NEXT JS', 'DJANGO', 'DATABASES', 'UX/UI'],
+                'Android app': ['FLUTTER', 'REACT NATIVE', 'C++', 'KOTLIN', 'JAVA'],
+                'Machine Learning': ['Tensor flow', 'Scikit Learn', 'Seaborn']
+            };
+
+            // Populate subdomain options
+            subdomains[selectedDomain].forEach(function (subdomain) {
+                var option = document.createElement('option');
+                option.value = subdomain;
+                option.text = subdomain;
+                subdomainSelect.add(option);
+            });
+        }
+
+        // Initial population of subdomain options
+        updateSubdomainOptions();
+        
+    </script>
+</body>
+</html>

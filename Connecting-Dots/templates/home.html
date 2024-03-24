@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+nav{
+    position:static;
+ 
+}
+
+#logo{
+    border-radius: 50%;
+    animation:moveIcon 5s  infinite linear;
+    padding:0.1rem;
+}
+@keyframes moveIcon{
+    100%{
+       transform:rotate(360deg);
+    }
+   
+}
+
+
+#user{
+    font-size: 1.5rem;
+    border:1px solid  black;
+    border-radius: 50%;
+    padding: .5rem;
+    color:blue;
+}
+#hero-section-content{
+margin-top:10rem
+}
+.hero-section-btns{
+    margin: 3rem;
+}
+.hero-section>button{
+    padding: 5rem;
+}
+.user-icon-view{
+    position:absolute;
+    top:5rem;
+    right: 0;
+    height:10rem;
+    width:auto;
+    width:15rem;
+    display:none;
+    transform:transform 2s;
+
+    
+
+    
+}
+.user-account:active{
+    transform:scale(1.1)
+}
+
+#user-icon-view-bg{
+    background-color:rgb(193, 233, 233);
+   
+}
+.user-icon-view-photo{
+    position:relative;
+   
+    bottom:1rem;
+}
+/*log in and registration form css*/
+.footer{
+    background-color: rgb(171, 171, 223);
+}
+
+    </style>
+  </head>
+  <body>
+<div class="container-fluid  ">
+  <nav class="navbar navbar-expand-lg bg-transparent text-dark " >
+    
+  <a class="navbar-brand" href="#"> <img id="logo" class="border" src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAMAAzAMBEQACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAQIFBgcEAwj/xAA+EAABAwMCAwUFBgQEBwAAAAABAAIDBAURBiESMVETIkFhcQcygZGxFEJSocHhFnKS0RUjYrIkM0OTovDx/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAMFAQIEBgf/xAA1EQEAAgECBAQCCQQCAwAAAAAAAQIDBBEFEiExE0FRYXGxFCIyQoGhwdHhBjOR8CNSFTRy/9oADAMBAAIRAxEAPwDuKAeSD5l2dkF28kEoCAgIIJQV36oLAoJQEBAQEFXOwcIIagugICAgg8kFc+eEEjn4oLIBQfMnJwgs0YQWQEBAQEFfvIIQWwg8tZXUtFHx1c8cTer3YWl8lKdbSkx4smSdqRu89LfbXVSCOCvhe88hxc1HTU4bztW0JL6PPjje1JZIHKnc6UFXOwgq1qD6ICAgICCCgjwQAEE4QHDKCGtwgsgICAgICCCEABB4bxXsttumq3jPAO6Op8Aos2XwqTZNp8M5skUjzcnraueuqHVFU8vkcSc55enQLzt8lsluaz12LFTFXlpG0fN51okb1oO9yzPdbaqQvLWcULnHJwOYyrbQai1pnFefgoeKaStIjNSNvVunNWilV4d0F0BAQEBAQEEY3QSgICAgICAgICAgICDXdcsdJp6bgz3Htc4eQK4tdG+CdvZYcLtEaqN/dzMb8lRPUI5czj1QZ/Q8T3aiic3OI43Od6Yx+q7NDEzqPgruKWiNNMT57OnNV88wsgICAgICAgICAgICAgICAgICAgjO6DxXG8UFtA+2VLI3Hkzm4/AKHJnx4/tzsnw6fLm+xXdrVfrW3vidFHSSzseCHB+GjC4snEMe20RMrHDwnNExM2iJavJanVP+ZaT9ojJyYeICVnq08/UKv8Ln/tdfbzha/SeT6ueOWfXyn8fJWOx3N2S+jkhYPekn/wAtrfMkp9Hy+ddvizbV4I+9v8OsstZbzbbAXRxRuqpHAdpUNIAPk3PgunDqMWn6RG/u5NTpM+rne08sR2j920UWrrRUkNdOYHdJW4Hz5LuprsN/PZVZOG6jH5b/AAZuOeOVjXxPa9juTmHIPxXXExMbw4rRNZ2l9AssCAgICAgICAgICAgICAgICAgxWpbkbXaZqmMAy7Njz+I7fuufU5fCxTaO7p0eDx81aT2cole+WR8sr3Pkfu57juSvPTvM727vXVrFa8teyqwyYB+eQeiT1I2S88RHF3iOXFunSSI27fsjGTy+GEg9jG2CNk6D1W+41lum7SiqHxHxbnun1B2UlMl8U71nZFlwY80bZK7/AO+vdvOndYQ1rm01wDYagnDXj3Hn9CrbTa6Mk8t+6h1nDbYY58fWPzhtQOVYKoyglAQEBAQEBAQEBAQEBBBOEHkuNypLbTOqK6ZkMQ+884yk9EuHBlz35MVd59mCmqqTWdjq2W0vHZygMfIwtBeN/lvhc2ox/SMU1ju7/Cy8M1FZyx5do9Gg1dFVUUhjqoHxvG2CNj6FUOSl6TtaHoMebHkjelt4fWitddXOApaaR4P3sYA+JW1MOTJ9mGmXU4sUb3ts2Oh0LUSYNbVMi/0xjiP9l3Y+G2n7c7K3Lxisf267/FmafQ9pjA7Y1E58eOUt/wBuF0V4dhjvvP4/s478W1E9to/B7I9K2RgwLfGf5nOd9SpY0Wnj7qCeIaqfv/JLtK2RwwbfEP5SR+qfQsH/AFgjiGqj7/yeabRVlkGGRTRHqyZ36khaTw/Bt0jb8ZS14pqY7zE/hDHT6BgJH2evmaPHtGB30wobcNp5Wn/f8OmvGsn3qxPw6fuyNbdW6atlPT1Uzqyp4cM+6XAeJ54VhipNaxWZ3ef4hrseO3NFdpnyYul13mcNqaDhjPjHLxEfMDKl5VZTi8TP1q7R8f4bbR1sFbTMqKZ4fG8ZBC1lbY8lclYtXs9KNxAQEBAQEEE9EEZPiPzQWQEEEoMTqK+UtioXVVSeInuxxt957ugWJts69Fosmsy+HTt5z6ON3W63DUNxa+d5kke/hhib7rMnAAChm0zL3mm0uHQ4pinT1l2bTdojs9np6NvvNbmQj7zjuT81NEbRs8FrdVOqz2yz59vgyD2MOzmh2OWQDhJiJc0TMdksja1gDRgdAsx07Mee6+EEoCAgIKknwCDnGuy91/IeNhEzgzyHX81tDz3E5nx/8NfPqVlXNg0deDb60U0r8U05wf8AQ/wPxSVjoNTOK/LbtPzbzdLvS2qDtax/DnZjW7uefILVdZtRTDXe7XH69YH9y2vMfV0wB+QB+qbK6eLRv0p+bO2bUFHdwW05LJmjLon+8PPzCbO7T6vHqI+rPVlM9Vh1KtPeP0QfRAQVxlBU+QQOPGMkBDaUh2cfoh1h8q2pipKWSoqHhkMTS57j4BOzbHjtkvFK95cO1JeZb9dH1kpIjHdhjz7jP7nxUFp3l9E4foqaTD4cd/Off/ezPezG0/bry+vlbmGiHcyOch5fIZPxC2pHXdW/1Bq/C08Yaz1t8o/d1guw3ZSvFoDeLmg+iAgICAgq7wQEGt6xsr7lSielaTUwA4YP+o3xA8+izEq7iGmnLTmr3hzsLZ559aWEz1EUDdjI8NHlk80bUpN7RWPN679WOrbpM9zy5kZ7NmfBo/8Acon1WWcmWfbpDH+PJHO+tNUS0lRHUU7i2SNwc0j6I2pe1Lc1e7rdPKKmCKZp7sjA8D1GVq9bS3NWJehrcLDZZAQVdkDZBrOttR/w/QRiAB9ZUZbE08gBzcfTI+JWLW2WnCuHfTcsxbpWvWf2chrq2quMvbV9RJO875e7YHyHIfBQTO73eDDjwRy4o2h6rNerhZqhstBUPa0buhJyxw6Y8PgsxbZDq9Fg1Vdssfj5tp1vqU3SxW0UrXMp6rLpvJzcZZ8zn0W9p3iFLwjhsafU5PE62r2+E+f6NF2GT4DcqJ6V2rQdt/w7TVK17OGWYdtJ14nf2GB8FPXpD59xjUePrLTHaOkfgz7W9VsrH0QEBAQEBBBGUEYQTgdEHP8AW1nFJVCugbiGZ2HgD3XfutolQcS03JbxK9p7tco5vs9XBOR/ypGuI8gd1lX478l4t6TD7XanFNcJmA5Y89pG4cnMduCjfUV5ck7du8fj2eNEL6wRummEDGF8khDWgc8lEmOOado7uu0MApqWGAbiKNrPkMLWXq8deSkV9HoWG4gIIPJByj2rcf8AENMCe59kBb/U7P6fkosnd7P+m9vo1/8A6/Rpmcc+Sjeg2Q4ADP3eqMx6Ms7P8ItDuQuRDP8AtnP6LbycEbfT+n/Tr/l4bbTOrLhS0wGTLKxnD1GRn8lrEOnUZPCxXyekS/QMLQyJrByaMBdL5lM7zuujAgICAgICAgICDyXOjjrqKalm92RuPToUhFmx1y45pZyOaF1NLJDNhskbiwjzBxst3lJrNZms94e+3SxVfY26ta50fFwwyg96HPgOrfI8vBE+KYvMYskfCfT+PZm3aFqg/wDy62It6uYc/JY3dv8A4q+/SzPWHTVLaZO2JM1R+Nw2b6D9ViZd2m0OPB9bvLPYA5BYdyUBAQQeRQavrjTZv9Ax1OWtrafJiJ2DgebT64GPMLW9d1twniP0PLMW+xbv+7kVbR1NBKYqyCSB42Ie3Az5dVDMS9zhzY80c2O28PtbrZWXB+IIsRDd80h4Y2DqXJESj1GqxYI3tbr6R1mfbZ9bvUQvFPQUMjn0dI0hshGO3kdgvkx4DIwB4ALMz5I9JivHNmy9LW8vSPKP393t0NCJ9V29uT3HmQn0BSvdDxi810OSfw/y7aOSnfPkoCAgICAgICAgICDnWvaH7Pd21TB3Klm/8zdj+WFtDz/E8XJl5/KWv0ruCrgd97tW/ULLgp0tWfeHY2nIB6rR67usjIgICAgIIKD5SQxy7yxsdjlxDKMxaY+zMtF9q7+ytVDTxNaxkk54mjYHAytLvRf05Xnz3vbrMQ5oO6Mc+pUL1+zZPZyMaupfNj/9pW9O6p45/wCjb4w7MOSmeDSgICAgICAgICAgINZ15T9rZxMAS6CUOHkDsfqtoV3E6b4eb0mGgUwLqqFoGSZW/VZUNOt6/GPm7GNtui0euWRkQEBAQEBBBQc+9rsb/sdvkweASuBPQlq0yPTf0zMeJkj2/VzTKieu3bN7OmOk1ZS8AOGse5xHIDC2p3U/HLRGhtv7OzDkpng0oCAgICAgICAgICDH36AVNnrIusTvy3WUGppz4bVc205Aam+UbOEkF4cfIDc/RbS85o6zbNWHWVo9UICAgICAgo92NhzQWbyQY+/WqG822SiqMhr92uHNjhyIWJjeHTpNVfS5Yy08vz9nK59BX6GpMEcEU0ee7K2QBp8yD+6imkvY047o7V5pmYn02/39G96K0qLBDLNO9stbMAHubyaPwj+6krWIea4txOdbeIpG1Y/NtIGAtlUlBXiCCyAgICAgIIJ2QVac7oLZQUkZ2jHMI2c0goxMbxs1bSFhmoKqoq6xnC8ExxDOdvF3xWVZoNHOK03tHVtqwtBBUuAOEEggoJQEFXuwMeKCoaTzQfQIIIyg8tx420cz4jh4aSCAubWWvGnvNJ2nZJiiOeIl4rPde3AhqDiX7rvB37qv4bxLxv8Ajy/a+f8ALo1On5J5q9mXByrlxoPNA2QGoLICAgIIJQfPJc5Bf3Qg0P2ka8/hsNorc2OW5SN4u/u2FvU45noFtWu6LJfl6Q5JJrDU8tR277/cO1zkFkvA3+gd38lLywh5rerr/su1bUamt1RBceA19E5vaPYABKx2eF2PA5BzjpnbOBFeNk+O3M3papEO5II5DzQAN9uaCyCCdkFGjPNB9EBAQVkaHNLTyIwVraImNpN9p3aZUwvpKmSI7Fh2I6cwQvEZ8VsGWaecdl1jt4lN2btV3EgbDUnEnJrydnfur7h/FIybYs32vX1/n5/k4c+mmv1qdmXz4q73caRugsgICAggoPm7JIQXGAgw2rNQ0umrPLcKocbh3YYQcGV+Nmj9T4DdZrG8tbWisby/Ntxrqm6V09dXSCSonfxyO8M9B5DkAp9nLPWerz56ow6z7CKCYNutyc0iF5ZTxnHvObku+XE0f/FFklPijzdcWiZBCCB0QSAglAQEBAQEEEZQYi/URlY2oiGXxjBHUKl4vo5yUjLTvHydeky8tuWfNrvjschea3WbKW+8PgAjqMyMzz8QrbR8VtijkyxvHycebSxbrXu2CCojnjD4Xh7T0XpMWfHmrzY53hX2rak7Wh9lK1EBAQEEckGNv16obBbpK+5ziKBmw/E93g0DxJWYjdiZiO789aw1PWapuhqqkGKCPIp4M7Rt8/M+KmiNnLa3NLBnGAQQB45PJZYZnSOmqvVN1bR0gcyJhBqJ8bRN/ufBYmdma1mz9HWm2Utot1PQUMYjp4GBrGj6nzKgnq6ojaHtRkQEBAQEBAQEBAQQ4Z5rG241q82007zNA0mJx3aBnh/ZeY4nw+cVvFxx9Xz9v4Wem1HN9WzFkObu4YHmMfVVE7+fR1xMStDK+F/HC9zD1BW2PJfFbmxztLFqVtG1oZamv8je7URh3m3Y/JXOHjd4/uV3j2cV9FH3JZKnvFHMQO1DHfheMKzxcU02T720+7mvpslfJ7gc8jsrCJ3QLLIgnCDV9Ya3tWmIzHPIJ68jMdJE4F/kXfhHmVmKzLS14hwrUuo7hqau+13GXIGRFC33Ih5Dr5qaI5XPa027vPZrZ/idTKJJhT0lNEZqupIyIox0Hi4nZrfElJ6ERuyTtSx0JMOnrbTUkPITVEYmmk8yTsPQJszNtuzKWP2k3q1zcUjKWpgc7MkfYtjcfQtx9FiaQzXJMd3atN36j1FaorhQPyx5LXsPvRvHNp8x+6imNpTxbeN4ZZYbCAgICAgICAgICD5zzNgjdJIcNaMlR5MlcdZtaekM1rNp2hrFZd6mdx7J5ijPIN5/Eryuo4pnzT9SeWPzWmPSUrH1urztrpx3Xv7Rh+4/vArnjWZ/O28ek9fn1b+DTyjaSeNhiE8Iw0nhc38B8vJM2Ok08XHG0dpj0n9p8ilpieSzz+C5Uwdxg8uixsyzWn6x4l+yvcXAjLSTyI5hX3B9Xbn8C09+zg1eKNueHqv2o7Xp+DtrpWMi27sY3e/0aNyvSREyrptEd3J9U+1e4XBr6axtNDAdu3dgyuHl4N/MqSKbd0Fssz2c6c973ue95c+Rxc9zjlzj1JPP1K3RPZZ7Rcb3UGG00UtU/OHOY3us9Xch6ZWJnZmImWz6n09W6S0lT0Vc6Iz3GsMsvZHIa2No4Wk+OC4n1WsTEy3tWaQ0sbLdGs3ujJ5eA6oOnewuslbdrpRAkxSQMmLfwuaeH6H/AMR0Ud02KfJ2VRpxAQEBAQEBAQEBBiNSOLaNgBIDngH0wVT8atMYIiPOf0l16OP+RrfReXWYg9tqjNTLNBktEkZycZ3GFY8Ox+Ne+HfpMOfUW5Ii/pJVWyrp/udo38TAtc/DdRh67bx7FNTjv7PGdtsb9PFcE9J2nun33jozFhopTUCqlBaxrcNyMFx5K84To7+L414229e/bb/HVxarNXl5KsNqT2Z22/XOe4urqyCefBeOIPZsMDAIyPTOF6aLzCrtjizFwexq2tP/ABF2rXj/AEMa0/qs88seDDOW32ZaVoXB7qB1Y8ferJDIP6fd/JYm0yzGOrbqeCGniEUEUcUbRgMjaGtA9AtUkdGp+1DTk2otOOZRM4qyld20LPF/4mjzI/MBbUnaWmSvND8+lro3FsrS1zTgsIIIPQg8lM5VS7mXEIO3ex3TM9ot1RdK+N0VRXBojjeMOZEN8noSTy6AKK9t3RjrtG8ujrRKICAgICAgICAgIPJc6X7XTOjBw7m31C5Nbp/pGGaefklw5PDvzNSljfE9zJG8DgcELxuTHbHblvG0ritotG8KeS09mWxWKidAwzy91zxhregXpuE6O2Ks5b957e0K3V5otPLHaGXaeJqunGdm3OeFvyWvLX0Z3lZbMCAgICAg12/aL0/fpjNcbcx0x5yxPdG8+paQStotMNJpWXns3s+0zZ521FLbRJO3dslRI6UtPUcROPgk2mWYpEdm1LVsICCCQOaCrSS49EF0BBU7oIxhBYIJQEBB8KilgqNpomv9QoMuDFljbJXdvXJan2ZfOKhpYDxRwNa7rhaYtHgxTvSkRLNst7RtMvvniGF1I1wEEoCAgIKuOMII4RlBI2QWQEBAQCg+bu9sgs0YQWQEFUABBZAQEBBB2QUzxeiCzW4QWQEBAQEFXeCBjKCQEEoCAgIPm4nOPFBZoxueaCyAg//Z' alt="dhdfjhdj" height="80px">
+       </a> <h3>Connecting <br> Dots</h3>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         
+          <div class="dropdown mx-5 px-5">
+
+          </div>  <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Web Development
+            </a>
+          
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ url_for('login') }}">Html</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('login') }}">CSS</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('login') }}">javascript</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('login') }}">Node Js</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('login') }}">Django</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Machine Learning
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              App Development
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              
+            </ul>
+          </li>
+         
+        </ul></div>
+        <!-- <form class="d-flex" role="search"> -->
+          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+          <!-- <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> -->
+        <!-- </form> -->
+         
+        
+        <div class="user-account mx-3">
+          <i class="fa-solid fa-user" id="user"></i>
+        </div>
+        <div class="user-icon-view border rounded-5">
+          <div id="user-icon-view-bg" style="height:5rem">
+
+          </div>
+     
+         <div class="user-icon-view-btns bg-light text-center"> <div class="user-icon-view-photo"><i class="fa-solid fa-user" id="user"></i></div>
+         <div class="user-details">
+          <h6>User name</h6>
+          Domain:main_domain
+          <br>
+          number of projects:4
+        <br>
+          <div class="team">
+            <a href="#"></a>
+          </div>
+        </div>
+          <button type="button" class="btn btn-primary  rounded-5 mx-5"><i class="fa-solid fa-right-to-bracket"></i>  </button>
+          <button type="button" class="btn border rounded-5 "><i class="fa-solid fa-right-to-bracket"></i></button></div>
+        </div>
+      </div>
+   
+  </nav>
+</div>
+<!-- hero section -->
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-md-6 text-center " id="hero-section-content">
+      <h1>Connecting Dots</h1>
+      <p class="fs-4">Extend the <span class=" text-primary">Network</span>  Beyond Limits</p>
+      <div class="row">
+        <div class="col-sm-6 hero-section-btns">
+          <a href="{{ url_for('signup') }}"><button type="button" class="btn border rounded-5 px-4 bg-primary">Sign Up</button></a>
+        
+          <a href="{{ url_for('login') }}"><button type="button" class="btn border rounded-5 px-4">Log In</button></a>
+        </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 pl-5">
+     
+      <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR98kVJ5bPs0w_pcNvnkjyktXVWK9Szbe6-U7x6tFKJMRUc0wrvhH91haXChHmk6adgxIE&usqp=CAU" alt="" width="500px">
+    </div>
+  </div>
+</div>
+<div class="footer mt-5 p-2 text-center  ">
+<footer>
+  <div class="row">
+    <div class="col-sm-2 offset-4">
+  
+  <a href=""><button type="button" class="btn border rounded-5 px-4 bg-success">About Us</button></a></div>
+
+  <div class="col-sm-2">
+  <a href="mailto:phansika03@gmail.com"><button type="button" class="btn border rounded-5 px-4">Contact Us</button></a></div>
+
+</footer></div>
+
+<script src="project.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        let profile=document.querySelector('.user-account')
+let profile_exp=document.querySelector('.user-icon-view')
+profile.addEventListener('click',()=>{
+   if(profile_exp.style.display=='block') {
+profile_exp.style.display='none';}
+else{
+    profile_exp.style.display='block';
+  
+  
+}
+})
+    </script>
+  </body>
+</html>

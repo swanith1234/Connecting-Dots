@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 16px;
+            color: #555;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+   
+    <form method="POST">
+        <h1>Signup</h1>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <label for="domain">Domain:</label>
+        <select name="domain" id="domainSelect" onchange="updateSubdomainOptions()" required>
+            <option value="Web app">Web app</option>
+            <option value="Android app">Android app</option>
+            <option value="Machine Learning">Machine Learning</option>
+        </select>
+
+        <label for="subdomain">Subdomain:</label>
+        <select name="subdomain" id="subdomainSelect" required>
+            <!-- Subdomain options will be dynamically populated based on the selected domain -->
+        </select>
+
+        <input type="submit" value="Sign Up">
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>
+    </form>
+  
+
+    <script>
+        function updateSubdomainOptions() {
+            var domainSelect = document.getElementById('domainSelect');
+            var subdomainSelect = document.getElementById('subdomainSelect');
+            var selectedDomain = domainSelect.options[domainSelect.selectedIndex].value;
+
+            // Clear existing options
+            subdomainSelect.innerHTML = '';
+
+            // Define subdomain options based on the selected domain
+            var subdomains = {
+                'Web app': ['HTML', 'CSS', 'JS', 'ANGULAR', 'REACT', 'NODE JS', 'NEXT JS', 'DJANGO', 'DATABASES', 'UX/UI'],
+                'Android app': ['FLUTTER', 'REACT NATIVE', 'C++', 'KOTLIN', 'JAVA'],
+                'Machine Learning': ['Tensor flow', 'Scikit Learn', 'Seaborn']
+            };
+
+            // Populate subdomain options
+            subdomains[selectedDomain].forEach(function (subdomain) {
+                var option = document.createElement('option');
+                option.value = subdomain;
+                option.text = subdomain;
+                subdomainSelect.add(option);
+            });
+        }
+
+        // Initial population of subdomain options
+        updateSubdomainOptions();
+    </script>
+</body>
+</html>
